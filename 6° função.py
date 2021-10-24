@@ -36,5 +36,4 @@ def adiciona_na_mesa(piece, table):
         table.append(inv_piece)
     
     
-
     return table
