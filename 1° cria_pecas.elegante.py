@@ -15,6 +15,4 @@ def cria_pecas():
     shuffle(pieces)
 
     return pieces
-
-
-print(make_pieces())
+    
