@@ -16,3 +16,4 @@ def cria_pecas():
 
     return pieces
     
+print(cria_pecas())
