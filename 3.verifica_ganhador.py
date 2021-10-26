@@ -1,4 +1,4 @@
-#Função que verifica ganhador a cada rodada. 
+#Função que verifica ganhador a cada rodada
 def verifica_ganhador(jogador_pecas): 
 
     for jogador, pecas in jogador_pecas.items():
