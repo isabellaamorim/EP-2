@@ -6,7 +6,6 @@ def inicia_jogo(n_jogadores, lista_pecas):
     jogador2 = []
     jogador3 = []
     monte = []
-    mesa = []
     dic_inicio = {'jogadores':{},'monte':[] , 'mesa':[]}
 
     if n_jogadores == 2:
