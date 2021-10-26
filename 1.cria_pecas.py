@@ -2,7 +2,7 @@ from random import shuffle
 
 def cria_pecas():
 
-    pieces = []
+    pieces = []#lista que guarda todas as peças
 
     # cria as peças do dominó
     for n1 in range(0,7):
@@ -16,4 +16,3 @@ def cria_pecas():
 
     return pieces
     
-print(cria_pecas())
