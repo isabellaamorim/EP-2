@@ -6,3 +6,4 @@ def verifica_ganhador(jogador_pecas):
             return jogador
 
     return -1
+    

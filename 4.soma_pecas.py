@@ -6,3 +6,4 @@ def soma_pecas(pecas):
         pontos += peca[0] + peca[1]
 
     return pontos
+    
