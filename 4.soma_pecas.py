@@ -1,3 +1,4 @@
+# 
 def soma_pecas(pecas):
 
     pontos = 0 

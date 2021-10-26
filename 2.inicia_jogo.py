@@ -1,3 +1,4 @@
+# 
 def inicia_jogo(n_jogadores, lista_pecas):
 
     jogador0 = []

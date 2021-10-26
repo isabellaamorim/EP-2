@@ -1,3 +1,4 @@
+# 
 def verifica_ganhador(jogador_pecas): 
 
     for jogador, pecas in jogador_pecas.items():
