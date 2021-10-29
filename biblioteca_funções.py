@@ -106,3 +106,14 @@ def verifica_ganhador(jogador_pecas):
             return jogador
 
     return -1
+
+#Função 4: soma os pontos a cada rodada. Quando pontos == 0 há um ganhador
+def soma_pecas(pecas):
+
+    pontos = 0 
+
+    for peca in pecas: 
+        pontos += peca[0] + peca[1]
+
+    return pontos
+    
