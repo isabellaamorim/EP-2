@@ -1,5 +1,7 @@
 from random import shuffle
 
+#Função 1: cria peças do jogo. 
+
 def cria_pecas():
 
     pieces = [] #lista que guarda todas as peças
@@ -14,4 +16,3 @@ def cria_pecas():
     shuffle(pieces)
 
     return pieces
-
