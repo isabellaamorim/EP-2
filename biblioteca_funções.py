@@ -96,3 +96,13 @@ def inicia_jogo(n_jogadores, lista_pecas):
         dic_inicio['monte'] = []
 
     return dic_inicio
+
+#Função 3: verifica ganhador a cada rodada
+def verifica_ganhador(jogador_pecas): 
+
+    for jogador, pecas in jogador_pecas.items():
+
+        if pecas == []: 
+            return jogador
+
+    return -1
