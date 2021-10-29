@@ -32,7 +32,7 @@ def inicia_jogo(n_jogadores, lista_pecas):
 
     #Desconsidera casos inválidos
 
-    if (n_jogadores != 2) or (n_jogadores != 3) or (n_jogadores != 4): 
+    if (n_jogadores != 2) and (n_jogadores != 3) and (n_jogadores != 4): 
         return 'Opção inválida. Escolha entre 2, 3 ou 4 jogadores.'
 
     #Caso de 2 jogadores
