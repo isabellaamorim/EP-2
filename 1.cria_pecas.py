@@ -14,3 +14,4 @@ def cria_pecas():
     shuffle(pieces)
 
     return pieces
+
