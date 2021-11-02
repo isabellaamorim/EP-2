@@ -12,4 +12,6 @@ def embaralha_jogaderes(n_jogadores):
 
     return ordem_jogada
 
-print(embaralha_jogaderes(4))
+for i in range(2,5):
+    for m in range(0,5):
+        print(embaralha_jogaderes(i))
