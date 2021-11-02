@@ -1,15 +1,15 @@
+#
+#
+# Função 1: cria peças do jogo. 
 from random import shuffle
-
-#Função 1: cria peças do jogo. 
-
 def cria_pecas():
 
-    pieces = [] #lista que guarda todas as peças
+    pieces = [] # lista que guarda todas as peças
 
     # cria as peças do dominó 
     for n1 in range(0,7):
         for n2 in range(0,7):
-            if [n2,n1] not in pieces: #impede que surjam peças iguais
+            if [n2,n1] not in pieces: # impede que surjam peças iguais
                 piece = [n1,n2]
                 pieces.append(piece)
 
@@ -17,8 +17,9 @@ def cria_pecas():
 
     return pieces
 
-#Função 2: para ínicio do jogo - distribuição de peças.
-
+#
+#
+# Função 2: para ínicio do jogo - distribuição de peças
 def inicia_jogo(n_jogadores, lista_pecas):
 
     #Define variáveis padrão
@@ -97,7 +98,9 @@ def inicia_jogo(n_jogadores, lista_pecas):
 
     return dic_inicio
 
-#Função 3: verifica ganhador a cada rodada
+#
+#
+# Função 3: verifica ganhador a cada rodada
 def verifica_ganhador(jogador_pecas): 
 
     for jogador, pecas in jogador_pecas.items():
@@ -107,7 +110,9 @@ def verifica_ganhador(jogador_pecas):
 
     return -1
 
-#Função 4: soma os pontos a cada rodada. Quando pontos == 0 há um ganhador
+#
+#
+# Função 4: soma os pontos a cada rodada. Quando pontos == 0 há um ganhador
 def soma_pecas(pecas):
 
     pontos = 0 
@@ -117,6 +122,9 @@ def soma_pecas(pecas):
 
     return pontos
 
+#
+#
+#
 #Função 5: verifica as possibilidades de peças que podem ser jogadas por rodada. 
 def posicoes_possiveis(table, player_pieces):
 
@@ -145,7 +153,9 @@ def posicoes_possiveis(table, player_pieces):
 
     return possibilities
 
-#Função 6: função que coloca peças na mesa
+#
+#
+# Função 6: função que coloca peças na mesa
 def adiciona_na_mesa(piece, table):
 
     last_peace = len(table)-1
@@ -185,3 +195,14 @@ def adiciona_na_mesa(piece, table):
     
     return table
     
+#
+#
+# Função 7: função enbaralha ordem dos jogadores
+def embaralha_jogaderes(n_jogadores):
+    ordem_jogada = []
+    for i in range(0, n_jogadores):
+        ordem_jogada.append(i)
+
+    shuffle(ordem_jogada)
+
+    return ordem_jogada
