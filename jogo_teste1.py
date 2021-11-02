@@ -25,7 +25,8 @@ dicionario_pecas = inicia_jogo(n_jogadores, pecas)
 ordem_jogadores = embaralha_jogaderes(n_jogadores)
 
 # loop q se repete até um jogador não ter peças
-while 1 == 1:
+j = 1
+while j == 1:
 
     for i in ordem_jogadores:
         
@@ -38,13 +39,31 @@ while 1 == 1:
             # Define e printa a mesa inicial 
             print()
             print('MESA: {}'.format(dicionario_pecas['mesa']))
-            print('Escolha a peça: ')
-            jogada = int(input())
+            jogada = int(input('Escolha a peça: '))
+            print()
+            while jogada not in posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][0]):
+                print('Jogada inválida.')
+                jogada = int(input('Escolha outra a peça: '))
+                print()
+            dicionario_pecas['mesa'] = adiciona_na_mesa(dicionario_pecas['jogadores'][0][jogada], dicionario_pecas['mesa'])
+            del(dicionario_pecas['jogadores'][0][jogada])
+            verificador = verifica_ganhador(dicionario_pecas['jogadores'])
+            if verificador != -1:
+                j -= 1729
+                break
+                
+
 
         else:
             jogada_PC = posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][i])
-            print(jogada_PC)
 
             if len(jogada_PC) > 0:
-                dicionario_pecas['mesa'].append(dicionario_pecas['jogadores'][i][jogada_PC[0]])
-            #else:
+                dicionario_pecas['mesa'] = adiciona_na_mesa(dicionario_pecas['jogadores'][i][jogada_PC[0]], dicionario_pecas['mesa'])
+                print('Jogador {} colocou a peça {} \n'.format(i,dicionario_pecas['jogadores'][i][jogada_PC[0]]))
+                del(dicionario_pecas['jogadores'][i][jogada_PC[0]])
+                verificador = verifica_ganhador(dicionario_pecas['jogadores'])
+                if verificador != -1:
+                    j -= 1729
+                    break
+
+print('Jogador {} ganhou'.format(verificador))
