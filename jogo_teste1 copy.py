@@ -40,12 +40,37 @@ while j == 1:
             # Define e printa a mesa inicial 
             print()
             print('MESA: {}'.format(dicionario_pecas['mesa']))
+
+
+            h = True 
+            while h:
+
+                if posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][0]) == []:
+
+                    if monte == []: 
+                        print('Não há peças possíveis e não há peças disponíveis no monte. Aguarde a próxima rodada.')
+                        i = 1 
+                        h == False 
+
+                    else: 
+
+                        print('Não há jogadas possíveis. Compre do monte')
+                        dicionario_pecas['jogadores'][0] += monte[0]
+                        del monte[0]
+                        print()
+                        print('Essas são suas peças')
+                        print(dicionario_pecas['jogadores'][0])
+
+                else: 
+                    h = False 
+
             jogada = int(input('Escolha a peça: '))
             print()
             while jogada not in posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][0]):
                 print('Jogada inválida.')
-                jogada = int(input('Escolha outra a peça: '))
+                jogada = int(input('Escolha outra peça: '))
                 print()
+                
             dicionario_pecas['mesa'] = adiciona_na_mesa(dicionario_pecas['jogadores'][0][jogada], dicionario_pecas['mesa'])
             del(dicionario_pecas['jogadores'][0][jogada])
             verificador = verifica_ganhador(dicionario_pecas['jogadores'])
