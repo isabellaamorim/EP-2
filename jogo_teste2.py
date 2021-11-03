@@ -10,17 +10,13 @@ print()
 
 while (n_jogadores != 2) and (n_jogadores != 3) and (n_jogadores != 4):
     print('Opção inválida. Escolha entre 2, 3 ou 4 jogadores.')
-    print()
     n_jogadores = int(input('Escolha entre 2, 3 ou 4 jogadores: '))
+    print()
 
 # Criação a distribuição de peças
 pecas = cria_pecas()
 dicionario_pecas = inicia_jogo(n_jogadores, pecas)
 monte = dicionario_pecas['monte']
-
-
-# EXEMPLO com 2 jogadores
-# dicionario_pecas == {'jogadores': {0: [[0, 5], [3, 5], [4, 4], [3, 4], [0, 3], [6, 6], [1, 3]], 1: [[4, 6], [3, 3], [4, 5], [3, 6], [5, 5], [0, 1], [1, 1]]}, 'monte': [[1, 4], [2, 5], [2, 3], [0, 0], [1, 2], [0, 4], [2, 4], [0, 6], [2, 2], [5, 6], [0, 2], [1, 6], [2, 6], [1, 5]], 'mesa': []}
 
 # Cria ordem de jogadas aleatório
 ordem_jogadores = embaralha_jogaderes(n_jogadores)
@@ -34,7 +30,7 @@ while j == 1:
         # controla vez do computador ou jogador
         if i == 0:
             # Mostra peças ao jogador 0
-            print('Essas são suas peças:')
+            print('Você está com {} peças em mãos.'.format(len(dicionario_pecas['jogadores'][0])))
             print(dicionario_pecas['jogadores'][0])
 
             # Define e printa a mesa inicial 
@@ -53,14 +49,16 @@ while j == 1:
                     dicionario_pecas['jogadores'][0] += [monte[0]]
                     del monte[0]
                     print()
-                    print('Essas são suas peças')
+                    print('Você está com {} peças em mãos.'.format(len(dicionario_pecas['jogadores'][0])))
                     print(dicionario_pecas['jogadores'][0])
                     
                     possibilidade = posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][0])
 
                 if possibilidade == [] and monte == []:
                     
-                    print(monte)
+                    print('Você está com {} peças em mãos.'.format(len(dicionario_pecas['jogadores'][0])))
+                    print(dicionario_pecas['jogadores'][0])
+                    print()
                     print('Não há peças possíveis e não há peças disponíveis no monte. Aguarde a próxima rodada.')
                     h = False
 
@@ -79,11 +77,11 @@ while j == 1:
                         dicionario_pecas['mesa'] = adiciona_na_mesa(dicionario_pecas['jogadores'][0][jogada], dicionario_pecas['mesa'])
                         del(dicionario_pecas['jogadores'][0][jogada])
 
-                        verificador = verifica_ganhador(dicionario_pecas['jogadores'])
+                    verificador = verifica_ganhador(dicionario_pecas['jogadores'])
 
-                        if verificador != -1:
-                            j -= 1729
-                            break
+                    if verificador != -1:
+                        j -= 1729
+                        break
 
                     h = False
                 
@@ -91,30 +89,42 @@ while j == 1:
 
         else:
 
+            print('Jogador {} está com {} peças em mãos.'.format(i, len(dicionario_pecas['jogadores'][i])))
+            print()
+
             h = True 
             while h:
 
                 jogada_PC = posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][i])
 
                 while (jogada_PC == []) and (monte != []):
-                    print(monte)
+
                     dicionario_pecas['jogadores'][i] += [monte[0]]
                     del monte[0]
+
+                    print('Jogador {} comprou do monte.'.format(i))
+                    print('Jogador {} está com {} peças em mãos.'.format(i, len(dicionario_pecas['jogadores'][i])))
+
                     jogada_PC = posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][i])
 
                 if jogada_PC == [] and monte == []:
-                    print('Jogador {} não tinha peças e o monte está vazio. Passou a vez.\n'.format(i))
-                    print(monte)
+                    print('Jogador {} não tinha peças possíveis e o monte está vazio. Passou a vez.\n'.format(i))
+                    
                     h = False
 
                 if jogada_PC != []:
                     dicionario_pecas['mesa'] = adiciona_na_mesa(dicionario_pecas['jogadores'][i][jogada_PC[0]], dicionario_pecas['mesa'])
                     print('Jogador {} colocou a peça {} \n'.format(i,dicionario_pecas['jogadores'][i][jogada_PC[0]]))
                     del(dicionario_pecas['jogadores'][i][jogada_PC[0]])
-                    verificador = verifica_ganhador(dicionario_pecas['jogadores'])
-                    if verificador != -1:
-                        j -= 1729
-                        break
+                
+                verificador = verifica_ganhador(dicionario_pecas['jogadores'])
+                if verificador != -1:
+                    j -= 1729
+                    break
+
                 h = False 
 
-print('Jogador {} ganhou'.format(verificador))
+if verificador == 0: 
+    print('Parabéns! Você ganhou!')
+else: 
+    print('Que pena, jogador {} ganhou'.format(verificador))
