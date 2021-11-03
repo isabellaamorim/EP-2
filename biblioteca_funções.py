@@ -142,6 +142,7 @@ def posicoes_possiveis(table, player_pieces):
         # números na estremidade da mesa
         num1 = table[0][0]
         num2 = table[-1][1]
+        
 
         # caucula as posições das peças jogáveis
         i = 0
