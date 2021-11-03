@@ -141,13 +141,13 @@ def posicoes_possiveis(table, player_pieces):
     else:
         # números na estremidade da mesa
         num1 = table[0][0]
-        num2 = table[len(table)-1][1]
+        num2 = table[-1][1]
 
         # caucula as posições das peças jogáveis
         i = 0
         for piece in player_pieces:
 
-            if num1 in piece or num2 in piece:
+            if (num1 in piece) or (num2 in piece):
                 possibilities.append(i)
             i += 1
 
