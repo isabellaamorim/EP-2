@@ -5,6 +5,8 @@ print('\033[47m'+'\033[1m'+'\033[30m'+' Bem vindo ao JOGO DE DOMINÓ '+'\033[0;0
 print('O objetivo é ser o primeiro jogador a ficar sem peças na mão!')
 print()
 print('Vamos começar.')
+print('Antes, lembre-se: As peças estão numeradas de 1 a 7')
+print()
 n_jogadores = int(input('Escolha entre 2, 3 ou 4 jogadores: '))
 print()
 
@@ -22,8 +24,8 @@ monte = dicionario_pecas['monte']
 ordem_jogadores = embaralha_jogaderes(n_jogadores)
 
 # loop q se repete até um jogador não ter peças
-j = 1
-while j == 1:
+j = True
+while j:
 
     for i in ordem_jogadores:
         
@@ -45,12 +47,16 @@ while j == 1:
 
                 while (possibilidade == []) and (monte != []):
 
+                    print()
                     print('Não há jogadas possíveis. Compre do monte')
                     dicionario_pecas['jogadores'][0] += [monte[0]]
                     del monte[0]
                     print()
                     print('Você está com {} peças em mãos.'.format(len(dicionario_pecas['jogadores'][0])))
                     print(dicionario_pecas['jogadores'][0])
+                    print()
+                    print('MESA: {}'.format(dicionario_pecas['mesa']))
+                    print()
                     
                     possibilidade = posicoes_possiveis(dicionario_pecas['mesa'], dicionario_pecas['jogadores'][0])
 
@@ -65,11 +71,13 @@ while j == 1:
                 if possibilidade != []: 
 
                     jogada = int(input('Escolha a peça: '))
+                    jogada -= 1
                     print()
 
                     while jogada not in possibilidade:
                         print('Jogada inválida.')
                         jogada = int(input('Escolha outra peça: '))
+                        jogada -= 1
                         print()
 
                     if jogada in possibilidade:
@@ -79,8 +87,8 @@ while j == 1:
 
                     verificador = verifica_ganhador(dicionario_pecas['jogadores'])
 
-                    if verificador != -1:
-                        j -= 1729
+                    if verificador == 0:
+                        j = False
                         break
 
                     h = False
@@ -90,7 +98,6 @@ while j == 1:
         else:
 
             print('Jogador {} está com {} peças em mãos.'.format(i, len(dicionario_pecas['jogadores'][i])))
-            print()
 
             h = True 
             while h:
@@ -118,8 +125,9 @@ while j == 1:
                     del(dicionario_pecas['jogadores'][i][jogada_PC[0]])
                 
                 verificador = verifica_ganhador(dicionario_pecas['jogadores'])
-                if verificador != -1:
-                    j -= 1729
+
+                if verificador == i:
+                    j = False
                     break
 
                 h = False 
