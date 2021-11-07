@@ -1,5 +1,5 @@
 from biblioteca_funções import * 
-from teste_cores import *
+from função_cores import *
 
 start = True 
 
