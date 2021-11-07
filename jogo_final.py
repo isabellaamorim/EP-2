@@ -12,13 +12,15 @@ while start:
     print('Vamos começar.')
     print('Antes, lembre-se: As peças estão numeradas de 1 a 7')
     print()
-    n_jogadores = int(input('Escolha entre 2, 3 ou 4 jogadores: '))
+    n_jogadores = input('Escolha entre 2, 3 ou 4 jogadores: ')
     print()
 
-    while (n_jogadores != 2) and (n_jogadores != 3) and (n_jogadores != 4):
+    while (n_jogadores != '2') and (n_jogadores != '3') and (n_jogadores != '4'):
         print('Opção inválida. Escolha entre 2, 3 ou 4 jogadores.')
-        n_jogadores = int(input('Escolha entre 2, 3 ou 4 jogadores: '))
+        n_jogadores = input('Escolha entre 2, 3 ou 4 jogadores: ')
         print()
+
+    n_jogadores = int(n_jogadores)
 
     # Criação a distribuição de peças
     pecas = cria_pecas()
