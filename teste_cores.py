@@ -1,80 +1,57 @@
-RED   = "\033[1;31m"  
-BLUE  = "\033[1;34m"
-CYAN  = "\033[1;36m"
-MISTERIO1  = "\033[1;35m"
-YELLOW  = "\033[1;33m"
-GREEN = "\033[0;32m"
-RESET = "\033[0;0m"
-BOLD    = "\033[;1m"
-REVERSE = "\033[;7m"
+cores = {0: "\033[1;31m" , 
+1: "\033[0;32m",
+2: "\033[1;33m",
+3: "\033[1;34m", 
+4: "\033[1;35m", 
+5: "\033[1;36m",
+6: "\033[1;30m"}
 
-def colorir(pecas): 
+reset = "\033[0;0m"
 
-   pecas2 = []
+def cor_peca(p):
 
-   peca2 = []
+   cor1 = cores[p[0]] + f'{p[0]}' + reset 
+   cor2 = cores[p[1]] + f'{p[1]}' + reset
 
-   cor = 0
+   peca = '[' + cor1 + ' ' + '|' + ' ' + cor2 + ']'
+   return peca
 
-   for peca in pecas: 
-      for n in peca: 
+def cor_pecas(pecas): 
 
-         if n == 0: 
-            cor = RED + str(n) + RESET
-            peca2.append(cor)
+   pecas1 = ''
 
-            print(n)
+   for p in pecas:
 
-      pecas2.append(peca2)
+      cor1 = cores[p[0]] + f'{p[0]}' + reset 
+      cor2 = cores[p[1]] + f'{p[1]}' + reset
 
-   return pecas2
-            
+      peca = '[' + cor1 + '|' + cor2 + ']'
 
-print(colorir([[0,0]]))
+      pecas1 += ' ' + peca 
 
-def colorir2(pecas):
-    pecas = str(pecas)
+   return pecas1
 
-    for p in pecas: 
+def cor_mesa(pecas): 
 
-      if p == '[':
-         p = p
+   if len(pecas) == 0: 
+      return ''
 
-      if p == ' ':
-         p = p
+   mesa = ''
 
-      if p == ',':
-         p = p
+   for p in pecas:
 
-      if p == ']':
-         p = p
+      cor1 = cores[p[0]] + f'{p[0]}' + reset 
+      cor2 = cores[p[1]] + f'{p[1]}' + reset
 
-      if p == '0':
-         p = RED + p + RESET
+      peca = '[' + cor1 + '|' + cor2 + ']'
 
-      if p == '1':
-         p = BLUE + p + RESET
+      mesa +=  peca 
 
-      if p == '2':
-         p = GREEN + p + RESET
+   return mesa
 
-      if p == '3':
-         p = CYAN + p + RESET
-
-      if p == '4':
-         p = YELLOW + p + RESET
-
-      if p == '5':
-         p = MISTERIO1 + p + RESET
-
-      if p == '6':
-         p = p
-
-      return pecas 
-
-print(colorir2([[0,0], [0,1], [0,2]]))
+print(cor_mesa([[0,1], [2,3], [4,5], [6,0]]))
 
 
 
-
+   
 
